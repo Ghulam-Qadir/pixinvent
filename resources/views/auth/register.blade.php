@@ -106,6 +106,7 @@
                             <h2 class="card-title fw-bold mb-1">Adventure starts here 🚀</h2>
                             <p class="card-text mb-2">Make your app management easy and fun!</p>
                             <form class="auth-register-form mt-2" action="{{ route('register') }}" method="POST">
+                                 @csrf
                                 <div class="mb-1">
                                     <label class="form-label" for="register-username">{{ __('Name') }}</label>
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -135,13 +136,19 @@
                                 @enderror
                                     </div>
                                 </div>
+                                <div class="mb-1">
+                                    <label class="form-label" for="password-confirm">{{ __('Password Confirm') }}</label>
+                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                </div>
                          {{--        <div class="mb-1">
                                     <div class="form-check">
                                         <input class="form-check-input" id="register-privacy-policy" type="checkbox" tabindex="4" />
                                         <label class="form-check-label" for="register-privacy-policy">I agree to<a href="#">&nbsp;privacy policy & terms</a></label>
                                     </div>
                                 </div> --}}
-                                <button class="btn btn-primary w-100" tabindex="5">Sign up</button>
+                                  <button type="submit" class="btn btn-primary w-100">
+                                    {{ __('Sign up') }}
+                                </button>
                             </form>
                             <p class="text-center mt-2"><span>Already have an account?</span><a href="{{ url('login') }}"><span>&nbsp;Sign in instead</span></a></p>
                             {{-- <div class="divider my-2">
